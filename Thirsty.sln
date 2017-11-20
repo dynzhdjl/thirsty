@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty", "Thirsty\Thirsty.csproj", "{D32BA9A5-D359-4DB8-A8D4-4F00E06BC942}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty.Web", "Thirsty\Thirsty.Web.csproj", "{D32BA9A5-D359-4DB8-A8D4-4F00E06BC942}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty.Tests", "Thirsty.Tests\Thirsty.Tests.csproj", "{7F58D9EB-413E-496D-B3B5-74C432317276}"
 EndProject

@@ -63,3 +63,22 @@ footer {
         width: 50%; /* 6 columns */
     }
 }
+
+
+[data-toggle="collapse"] {
+    cursor: pointer;
+}
+
+.parent-collapsed {
+    display: none;
+}
+
+.collapsed .parent-expanded {
+    display: none;
+}
+
+.collapsed .parent-collapsed {
+    display: inline-block;
+}
+
+

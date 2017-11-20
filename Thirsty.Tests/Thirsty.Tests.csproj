@@ -99,9 +99,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Thirsty\Thirsty.csproj">
+    <ProjectReference Include="..\Thirsty\Thirsty.Web.csproj">
       <Project>{D32BA9A5-D359-4DB8-A8D4-4F00E06BC942}</Project>
-      <Name>Thirsty</Name>
+      <Name>Thirsty.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
