@@ -2,24 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Thirsty.Repositories;
 namespace Thirsty.Models
 {
     public class HomePageViewModel
     {
         public IEnumerable<Style> Styles { get; set; }
-        public IEnumerable<Glassware> Glasswares { get; set; }
-        public IEnumerable<Availability> Availabilities { get; set; }
-    }
-
-    public class Style
-    {
-    }
-    public class Glassware
-    {
-    }
-
-    public class Availability
-    {
+        public IEnumerable<Glass> Glasswares { get; set; }
+        public IEnumerable<Available> Availabilities { get; set; }
     }
 }

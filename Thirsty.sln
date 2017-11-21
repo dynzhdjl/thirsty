@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty.Web", "Thirsty\Thir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty.Tests", "Thirsty.Tests\Thirsty.Tests.csproj", "{7F58D9EB-413E-496D-B3B5-74C432317276}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty.Repositories", "Thirsty.Repositories\Thirsty.Repositories.csproj", "{E1971C54-AB2A-42D6-9B20-FA9CAC0A8285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirsty.Repositories.Tests", "Thirsty.Repositories.Tests\Thirsty.Repositories.Tests.csproj", "{5F6630B9-AF31-436B-8BA9-63A5D17C0F3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7F58D9EB-413E-496D-B3B5-74C432317276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F58D9EB-413E-496D-B3B5-74C432317276}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F58D9EB-413E-496D-B3B5-74C432317276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1971C54-AB2A-42D6-9B20-FA9CAC0A8285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1971C54-AB2A-42D6-9B20-FA9CAC0A8285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1971C54-AB2A-42D6-9B20-FA9CAC0A8285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1971C54-AB2A-42D6-9B20-FA9CAC0A8285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6630B9-AF31-436B-8BA9-63A5D17C0F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6630B9-AF31-436B-8BA9-63A5D17C0F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6630B9-AF31-436B-8BA9-63A5D17C0F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6630B9-AF31-436B-8BA9-63A5D17C0F3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
