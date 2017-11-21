@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="GivenMenuRepository.cs" />
     <Compile Include="GivenPagedResult.cs" />
-    <Compile Include="GivenQueryConstraintExtensions.cs" />
+    <Compile Include="GivenRestRequestExtensions.cs" />
     <Compile Include="GivenQueryConstraints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

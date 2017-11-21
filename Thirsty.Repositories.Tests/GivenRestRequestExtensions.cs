@@ -7,10 +7,10 @@ using System.Linq;
 namespace Thirsty.Repositories.Tests
 {
     [TestClass]
-    public class GivenQueryConstraintExtensions
+    public class GivenRestRequestExtensions
     {
         [TestMethod]
-        public void GivenQueryConstraintExtensions_When_ConstraintsAppliedToRestRequest_ParameterListShouldBeCunstractedAsExpected()
+        public void GivenRestRequestExtensions_When_ConstraintsAppliedToRestRequest_ParameterListShouldBeCunstractedAsExpected()
         {
             var request = new RestRequest();
             var constraints = new QueryConstraints();
@@ -23,7 +23,7 @@ namespace Thirsty.Repositories.Tests
         }
 
         [TestMethod]
-        public void GivenQueryConstraintExtensions_When_ConstraintAppliedToRestRequestIsNull_ParameterListShouldNotBeChanged()
+        public void GivenRestRequestExtensions_When_ConstraintAppliedToRestRequestIsNull_ParameterListShouldNotBeChanged()
         {
             var request = new RestRequest();
             request.ApplyConstraints(null);
