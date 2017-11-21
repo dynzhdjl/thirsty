@@ -13,6 +13,10 @@ namespace Thirsty.Repositories
             request.AddParameter("p", constraints.PageNumber);
             request.AddParameter("order", constraints.SortPropertyName);
             request.AddParameter("sort", constraints.SortOrder == SortOrder.Ascending ? "ASC" : "DESC");
+            foreach (var item in constraints.FilterParameters)
+            {
+                request.AddParameter(item.Key, item.Value);
+            }
         }
     }
 }

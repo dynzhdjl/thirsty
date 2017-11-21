@@ -34,16 +34,15 @@ namespace Thirsty.Controllers
             this.beerRepository = beerRepository;
         }
 
-        public async Task<ActionResult> Index()
+        [HttpGet]
+        public async Task<ActionResult> Index(FilterParameters parameters)
         {
-            var queryConstraints = new QueryConstraints();
-            queryConstraints.Page(2).SortByDescending("name");
             var viewModel = new HomePageViewModel
             {
                 Availabilities = await beerAvailibilityMenuRepository.GetMenu(),
                 Glasswares = await glassMenuRepository.GetMenu(),
                 Styles = new List<Style>(),//await styleMenuRepository.GetMenu(),
-                Beers = await beerRepository.GetBeers(queryConstraints)
+                Beers = await beerRepository.GetBeers(parameters.GetQueryConstraints())
             };
             return View(viewModel);
         }

@@ -15,11 +15,13 @@ namespace Thirsty.Repositories.Tests
             var request = new RestRequest();
             var constraints = new QueryConstraints();
             constraints.Page(2).SortBy("name").Descending();
+            constraints.AddFilter("glasswareId", 1);
             request.ApplyConstraints(constraints);
 
             Assert.AreEqual(2, (int)request.Parameters.Single(p => p.Name == "p").Value);
             Assert.AreEqual(constraints.GetSortParameterString(), request.Parameters.Single(p => p.Name == "sort").Value);
             Assert.AreEqual(constraints.SortPropertyName, request.Parameters.Single(p => p.Name == "order").Value);
+            Assert.AreEqual(1, (int)request.Parameters.Single(p => p.Name == "glasswareId").Value);
         }
 
         [TestMethod]

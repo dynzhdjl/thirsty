@@ -17,6 +17,8 @@ namespace Thirsty.Repositories
         int PageNumber { get; }
         SortOrder SortOrder { get; }
         string SortPropertyName { get; }
+        Dictionary<string, object> FilterParameters { get; }
+        IQueryConstraints AddFilter(string name, object value);
         IQueryConstraints Page(int pageNumber);
         IQueryConstraints SortBy(string propertyName);
         IQueryConstraints SortByDescending(string propertyName);

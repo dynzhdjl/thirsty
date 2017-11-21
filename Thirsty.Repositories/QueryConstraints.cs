@@ -10,12 +10,15 @@ namespace Thirsty.Repositories
     public class QueryConstraints : IQueryConstraints
     {
         private const int firstPageNumber = 1;
+        private const string defaultSortPropertyName = "name";
 
         public int PageNumber { get; private set; } = firstPageNumber;
 
         public SortOrder SortOrder { get; private set; } = SortOrder.Ascending;
 
-        public string SortPropertyName { get; private set; }
+        public string SortPropertyName { get; private set; } = defaultSortPropertyName;
+
+        public Dictionary<string, object> FilterParameters { get; private set; } = new Dictionary<string, object>();
 
         public IQueryConstraints Page(int pageNumber)
         {
@@ -56,6 +59,12 @@ namespace Thirsty.Repositories
                 throw new InvalidOperationException();
             }
             SortOrder = SortOrder.Descending;
+            return this;
+        }
+
+        public IQueryConstraints AddFilter(string name, object value)
+        {
+            FilterParameters.Add(name, value);
             return this;
         }
     }
