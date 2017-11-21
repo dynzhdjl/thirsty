@@ -25,6 +25,18 @@ namespace Thirsty.Repositories
             return new PagedResult<Beer>(response.Data, response.CurrentPage, response.TotalResults);
         }
 
+        public virtual async Task<PagedResult<Beer>> GetBeers(IQueryConstraints constraints = null)
+        {
+            var request = new RestRequest
+            {
+                Resource = "beers"
+            };
+            request.AddParameter("hasLabels", "Y");
+            request.ApplyConstraints(constraints);
+            var response = await Api.Execute<RootObject<Beer>>(request);
+            return new PagedResult<Beer>(response.Data, response.CurrentPage, response.TotalResults);
+        }
+
         public virtual async Task<PagedResult<Beer>> GetByAvailabilityId(int availabilityId, IQueryConstraints constraints = null)
         {
             return new PagedResult<Beer>(new List<Beer>(), currentPageIndex: 0, totalPageCount: 0);
