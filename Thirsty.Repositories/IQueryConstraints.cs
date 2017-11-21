@@ -20,6 +20,6 @@ namespace Thirsty.Repositories
         IQueryConstraints Page(int pageNumber);
         IQueryConstraints SortBy(string propertyName);
         IQueryConstraints SortByDescending(string propertyName);
-        IQueryConstraints SortByDescending();
+        IQueryConstraints Descending();
     }
 }

@@ -10,7 +10,7 @@ namespace Thirsty.Repositories.Tests
         public void GivenQueryConstraint_When_OnlySortByMethodInvoked_Then_SortOrderShouldBeAscending()
         {
             var queryConstraints = new QueryConstraints();
-            queryConstraints.SortBy("name");
+            queryConstraints.Page(1).SortBy("name");
             Assert.AreEqual(queryConstraints.SortOrder, SortOrder.Ascending);
         }
 
@@ -18,7 +18,7 @@ namespace Thirsty.Repositories.Tests
         public void GivenQueryConstraint_When_OnlySortByDescendingMethodInvoked_Then_SortOrderShouldBeDescending()
         {
             var queryConstraints = new QueryConstraints();
-            queryConstraints.SortByDescending("name");
+            queryConstraints.Page(1).SortByDescending("name");
             Assert.AreEqual(queryConstraints.SortOrder, SortOrder.Descending);
         }
 
@@ -26,7 +26,7 @@ namespace Thirsty.Repositories.Tests
         public void GivenQueryConstraint_When_SortPropertyNameMethodInvoked_Then_SortPropertyNameAreSetCorrectly()
         {
             var queryConstraints = new QueryConstraints();
-            queryConstraints.SortBy("name");
+            queryConstraints.Page(1).SortBy("name");
             Assert.AreEqual(queryConstraints.SortPropertyName, "name");
         }
 
@@ -34,7 +34,7 @@ namespace Thirsty.Repositories.Tests
         public void GivenQueryConstraint_When_SortByAndSortByDescMethodsUsedTogahter_Then_SortORderShouldBeDescinding()
         {
             var queryConstraints = new QueryConstraints();
-            queryConstraints.SortBy("name").SortByDescending();
+            queryConstraints.Page(1).SortBy("name").Descending();
             Assert.AreEqual(queryConstraints.SortPropertyName, "name");
             Assert.AreEqual(queryConstraints.SortOrder, SortOrder.Descending);
         }
@@ -44,7 +44,7 @@ namespace Thirsty.Repositories.Tests
         {
             var queryConstraints = new QueryConstraints();
             Assert.ThrowsException<InvalidOperationException>(() => {
-                queryConstraints.SortByDescending();
+                queryConstraints.Descending();
             });
         }
     }

@@ -49,7 +49,7 @@ namespace Thirsty.Repositories
             return this;
         }
 
-        public IQueryConstraints SortByDescending()
+        public IQueryConstraints Descending()
         {
             if(String.IsNullOrEmpty(SortPropertyName))
             {

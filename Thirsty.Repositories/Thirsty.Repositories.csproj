@@ -69,6 +69,8 @@
     <Compile Include="Entities\Labels.cs" />
     <Compile Include="Entities\Srm.cs" />
     <Compile Include="Entities\Style.cs" />
+    <Compile Include="Extensions\QueryConstraintsExtenstions.cs" />
+    <Compile Include="Extensions\RestRequestExtensions.cs" />
     <Compile Include="Implementation\ApiRepository.cs" />
     <Compile Include="Implementation\BeerRepository.cs" />
     <Compile Include="Implementation\MenuRespository.cs" />
