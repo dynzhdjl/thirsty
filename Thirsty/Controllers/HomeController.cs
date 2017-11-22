@@ -39,12 +39,23 @@ namespace Thirsty.Controllers
         {
             var viewModel = new HomePageViewModel
             {
+                Page = 1,
                 Availabilities = await beerAvailibilityMenuRepository.GetMenu(),
                 Glasswares = await glassMenuRepository.GetMenu(),
-                Styles = new List<Style>(),//await styleMenuRepository.GetMenu(),
-                Beers = await beerRepository.GetBeers(parameters.GetQueryConstraints())
+                Styles = await styleMenuRepository.GetMenu(),
+                Beers = await beerRepository.GetBeers(parameters.GetQueryConstraints()),
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Index(HomePageViewModel model)
+        {
+            model.Beers = await beerRepository.GetBeers(model.GetQueryConstraints());
+            model.Glasswares = await glassMenuRepository.GetMenu();
+            model.Availabilities = await beerAvailibilityMenuRepository.GetMenu();
+            model.Styles = await styleMenuRepository.GetMenu();
+            return View(model);
         }
     }
 }

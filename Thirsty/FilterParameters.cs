@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Thirsty.Repositories;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Thirsty
 {
@@ -13,6 +14,7 @@ namespace Thirsty
         public int? StyleId { get; set; }
         public int? AvailabilityId { get; set; }
         public string Order { get; set; }
+        [Display(Name = "Sort By")]
         public string Sort { get; set; }
         public int? Page { get; set; }
 
@@ -31,13 +33,13 @@ namespace Thirsty
             {
                 constraints.AddFilter("availableId", AvailabilityId.Value);
             }
-            if(!String.IsNullOrEmpty(Order))
-            {
-                constraints.SortBy(Order);
-            }
             if(!String.IsNullOrEmpty(Sort))
             {
-                if(Sort.ToLower().Equals("desc"))
+                constraints.SortBy(Sort);
+            }
+            if(!String.IsNullOrEmpty(Order))
+            {
+                if(Order.ToLower().Equals("desc"))
                 {
                     constraints.Descending();
                 }

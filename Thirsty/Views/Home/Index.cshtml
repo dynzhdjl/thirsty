@@ -5,72 +5,82 @@
 
 <div class="row row-offcanvas row-offcanvas-left">
 
-  <div class="col-6 col-md-3 sidebar-offcanvas">
-    <div>
-      <div class="m-2">
-        <h6 class="list-group-item" data-toggle="collapse" data-target="#group-1">
-          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-          Styles
-        </h6>
-        <div id="group-1" class="collapse scrollable-menu">
-          @foreach (var style in Model.Styles)
-          {
-          <div class="form-check list-group-item">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">@style.Name
-            </label>
+  <div class="col-6 col-md-3 sidebar-offcanvas sliding-sidebar">
+    <form id="hede" action="@Url.Action("Index")" method="post">
+      @Html.HiddenFor(m => m.GlasswareId)
+      @Html.HiddenFor(m => m.StyleId)
+      @Html.HiddenFor(m => m.AvailabilityId)
+      @Html.HiddenFor(m => m.Page)
+      <div>
+        <div class="m-2">
+          <h6 class="list-group-item" data-toggle="collapse" data-target="#group-1">
+            Styles
+          </h6>
+          <div id="group-1" class="scrollable-menu">
+            @foreach (var style in Model.Styles)
+            {
+                <div class="form-check list-group-item">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="style-group" @(Model.StyleId == style.Id  ? "checked=checked" : String.Empty) value="@style.Id">@style.Name
+                  </label>
+                </div>
+            }
           </div>
-          }
         </div>
-      </div>
-      @if (Model.Availabilities != null)
-      {
-      <div class="m-2">
-        <h6 class="list-group-item" data-toggle="collapse" data-target="#group-2">
-          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-          Availability
-        </h6>
-        <div id="group-2" class="collapse scrollable-menu">
+        @if (Model.Availabilities != null)
+        {
+            <div class="m-2">
+              <h6 class="list-group-item" data-toggle="collapse" data-target="#group-2">
+                Availability
+              </h6>
+              <div id="group-2" class="scrollable-menu">
 
-          @foreach (var availabiliry in Model.Availabilities)
-              {
-              <div class="form-check list-group-item">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" value="">@availabiliry.Name
-                </label>
+                @foreach (var availability in Model.Availabilities)
+                {
+                    <div class="form-check list-group-item">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="availability-group" @(Model.AvailabilityId == availability.Id  ? "checked=checked" : String.Empty) value="@availability.Id">@availability.Name
+                      </label>
+                    </div>
+                }
               </div>
-              }
+            </div>
+        }
+        <div class="m-2">
+          <h6 class="list-group-item" data-toggle="collapse" data-target="#group-3">
+            Glassware
+          </h6>
+          <div id="group-3" class="scrollable-menu">
+            @foreach (var glass in Model.Glasswares)
+            {
+                <div class="form-check list-group-item">
+                  <label class="form-check-label">
+
+                    <input type="radio" class="form-check-input" name="glassware-group" @(Model.GlasswareId == glass.Id  ? "checked=checked" : String.Empty) value="@glass.Id">@glass.Name
+                  </label>
+                </div>
+            }
+          </div>
         </div>
       </div>
-      }
 
       <div class="m-2">
-        <h6 class="list-group-item" data-toggle="collapse" data-target="#group-3">
-          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-          Glassware
-        </h6>
-        <div id="group-3" class="collapse scrollable-menu">
-          @foreach (var glass in Model.Glasswares)
-          {
-          <div class="form-check list-group-item">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">@glass.Name
-            </label>
-          </div>
-          }
-        </div>
+        @Html.LabelFor(m => m.Order)
+        @Html.DropDownListFor(m => m.Order, Model.GetOrderSelecList(Model.Order), new { @class = "form-control" })
       </div>
 
-    </div>
+      <div class="m-2">
+        @Html.LabelFor(m => m.Sort)
+        @Html.DropDownListFor(m => m.Sort, Model.GetSortSelecList(Model.Sort), new { @class = "form-control" })
+      </div>
+    </form>
   </div>
   <div class="col-12 col-md-9 p-2">
 
+
     <div class="row">
       <p class="float-left d-md-none">
-        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle Filter Pane</button>
       </p>
     </div>
     <div class="row">
@@ -95,9 +105,7 @@
                   <span class="d-block">avail: @(beer.Available != null ? beer.Available.Name : "N\\A")</span>
                 </div>
               </div>
-              
             </div>
-
           </div><!--/span-->
       }
 
@@ -106,15 +114,15 @@
       <nav aria-label="pager">
         <ul class="pagination">
           <li class="page-item float-left">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
+            <a id="prev-page-link" class="page-link" data-index="@Model.GetPrevPageIndex()" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo; Previous Page</span>
               <span class="sr-only">Previous</span>
             </a>
           </li>
 
           <li class="page-item float-right">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
+            <a id="next-page-link" class="page-link"  data-index="@Model.GetNextPageIndex()" href="#" aria-label="Next">
+              <span aria-hidden="true">Next Page &raquo;</span>
               <span class="sr-only">Next</span>
             </a>
           </li>
@@ -122,4 +130,5 @@
       </nav>
     </div>
   </div><!--/span-->
+
 </div>

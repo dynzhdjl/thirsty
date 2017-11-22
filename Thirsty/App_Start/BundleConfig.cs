@@ -23,6 +23,7 @@ namespace Thirsty
                       "~/Scripts/umd/popper.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
+                      "~/Scripts/homepage.js",
                       "~/Scripts/offcanvas.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

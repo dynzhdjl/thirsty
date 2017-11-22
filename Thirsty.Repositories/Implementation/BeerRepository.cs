@@ -22,6 +22,10 @@ namespace Thirsty.Repositories
                 Resource = "beers"
             };
             var response = await Api.Execute<RootObject<Beer>>(request);
+            if(response.Data == null)
+            {
+                return PagedResult<Beer>.Empty;
+            }
             return new PagedResult<Beer>(response.Data, response.CurrentPage, response.TotalResults);
         }
 
@@ -34,17 +38,21 @@ namespace Thirsty.Repositories
             request.AddParameter("hasLabels", "Y");
             request.ApplyConstraints(constraints);
             var response = await Api.Execute<RootObject<Beer>>(request);
-            return new PagedResult<Beer>(response.Data, response.CurrentPage, response.TotalResults);
+            if(response.Data == null)
+            {
+                return PagedResult<Beer>.Empty;
+            }
+            return new PagedResult<Beer>(response.Data, response.CurrentPage, response.NumberOfPages);
         }
 
         public virtual async Task<PagedResult<Beer>> GetByAvailabilityId(int availabilityId, IQueryConstraints constraints = null)
         {
-            return new PagedResult<Beer>(new List<Beer>(), currentPageIndex: 0, totalPageCount: 0);
+            throw new NotImplementedException();
         }
 
         public virtual async Task<PagedResult<Beer>> GetByStyleId(int styleId, IQueryConstraints constraints = null)
         {
-            return new PagedResult<Beer>(new List<Beer>(), currentPageIndex: 0, totalPageCount: 0);
+            throw new NotImplementedException();
         }
     }
 }

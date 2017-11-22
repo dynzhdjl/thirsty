@@ -12,6 +12,12 @@ namespace Thirsty.Repositories
         public int CurrentPageIndex { get; set; }
         public int TotalPageCount { get; set; }
 
+        public static PagedResult<TEntity> Empty { get { return new PagedResult<TEntity>(); } }
+
+        private PagedResult()
+        {
+            Items = Enumerable.Empty<TEntity>();
+        }
         public PagedResult(IEnumerable<TEntity> items, int currentPageIndex, int totalPageCount)
         {
             if(currentPageIndex <= 0)
