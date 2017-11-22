@@ -38,14 +38,5 @@ namespace Thirsty.Repositories.Tests
             Assert.AreEqual(queryConstraints.SortPropertyName, "name");
             Assert.AreEqual(queryConstraints.SortOrder, SortOrder.Descending);
         }
-
-        [TestMethod]
-        public void GivenQueryConstraint_When_SortByDescMethodInvokedWithoutPropertyName_Then_InvalidOperationExceptionMustBeThrown()
-        {
-            var queryConstraints = new QueryConstraints();
-            Assert.ThrowsException<InvalidOperationException>(() => {
-                queryConstraints.Descending();
-            });
-        }
     }
 }
